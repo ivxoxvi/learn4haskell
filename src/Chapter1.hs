@@ -674,10 +674,11 @@ aren't ready for this boss yet!
 
 firstDigit :: Int -> Int
 firstDigit n
-  | quotient == 0 = n
+  | quotient == 0 = an
   | otherwise = firstDigit quotient
   where
-    quotient = div n 10
+    an = abs n
+    quotient = div an 10
 
 
 {-
