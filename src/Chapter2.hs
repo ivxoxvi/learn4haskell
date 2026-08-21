@@ -338,7 +338,7 @@ ghci> :l src/Chapter2.hs
 subList :: Int -> Int -> [a] -> [a]
 subList l r list
     | l < 0 || r < 0 = []
-    | otherwise = drop l $ take r list
+    | otherwise = drop l $ take (r + 1) list
 
 {- |
 =⚔️= Task 4
@@ -869,7 +869,10 @@ list.
 -- rotate n (x:xs) = rotate (n-1) xs ++ [x]
 
 rotate :: Int -> [a] -> [a]
-rotate n list = drop n $ take (n + length list) $ cycle list
+rotate n list 
+    | n < 0 = []
+    | null list = []
+    | otherwise = drop n $ take (n + length list) $ cycle list
 {- |
 =💣= Task 12*
 
